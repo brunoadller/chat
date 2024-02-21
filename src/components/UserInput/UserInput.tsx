@@ -9,7 +9,7 @@ const UserInput = () => {
         if(e.code.toLowerCase() === 'enter'){
             if(nameInput.trim() !== '' || nameInput !== 'bot'){
                 userCtx?.setName(nameInput)
-                console.log(userCtx?.name)
+                
             }
         }
     }

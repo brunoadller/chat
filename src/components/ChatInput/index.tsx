@@ -4,13 +4,13 @@ import { useUser } from '@/contexts/UserContext'
 import React, { useState } from 'react'
 type Props= {
     name: string
-    refScroll: React.LegacyRef<HTMLDivElement>
+    scrollToBottom: () => void
     
 }
-const ChatInput = ({name, refScroll}: Props) => {
+const ChatInput = ({name, scrollToBottom}: Props) => {
   const userCtx = useUser()
   const chatCtx = useChat()
-  const [isScroll, setIsScroll] = useState(false)
+  
 
   const [message, setMessage] = useState('')
   const handleKeyUpMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -23,10 +23,12 @@ const ChatInput = ({name, refScroll}: Props) => {
             text:message
           }
         })
-        setIsScroll(!isScroll)
+        
         setMessage('')
+        scrollToBottom()
       }
     }
+    
   }
   return (
     <input
